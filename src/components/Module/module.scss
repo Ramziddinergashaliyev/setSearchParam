@@ -34,3 +34,9 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 500px) {
+  .model {
+    width: 80% !important;
+  }
+}

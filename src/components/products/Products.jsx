@@ -4,6 +4,7 @@ import "./products.scss";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { NavLink, useSearchParams } from "react-router-dom";
 import Module from "../Module/Module";
+import Loading from "../loading/Loading";
 
 let API_URL = "https://dummyjson.com";
 
@@ -14,7 +15,7 @@ function Products() {
   const [detailsLoading, setDetailsLoading] = useState(false);
   let id = searchParams.get("detail");
   let limit = searchParams.get("limit") || 1;
-  let count = 3;
+  let count = 6;
 
   document.body.style.overflow = id ? "hidden" : "auto";
 
@@ -82,10 +83,10 @@ function Products() {
       {searchParams.get("detail") ? (
         <Module width={"60%"} close={closeDetails}>
           {detailsLoading ? (
-            <h2>Loading...</h2>
+            <Loading />
           ) : (
             <div className="products__module">
-              <img src={datail?.images[0]} width={400} alt="" />
+              <img src={datail?.images[0]} alt="" />
               <div className="products__module__info">
                 <h2>{datail?.title}</h2>
                 <p>{datail?.description}</p>
